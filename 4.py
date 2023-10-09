@@ -5,7 +5,7 @@ def reverse_dict(dict):
     for i in dict:
         hash(dict[i])
         if dict[i] in new_dict:
-            if type(new_dict[dict[i]]) == str:
+            if type(new_dict[dict[i]]) != tuple:
                 new_dict[dict[i]] = tuple([new_dict[dict[i]], i])
             else:
                 sp = [j for j in new_dict[dict[i]]]
@@ -16,6 +16,6 @@ def reverse_dict(dict):
     return new_dict
 
 
-dict = {"Ivanov": 97832, "Petrov": 55521, "Kuznecov": 97832, 'vasdsad': 97832}
+dict = {12334: 97832, 4567: 55521, 978: 97832, 446: 97832}
 new = reverse_dict(dict)
 print(new)
