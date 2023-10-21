@@ -1,21 +1,24 @@
 
-
-def reverse_dict(dict):
-    new_dict = {}
-    for i in dict:
-        hash(dict[i])
-        if dict[i] in new_dict:
-            if type(new_dict[dict[i]]) != tuple:
-                new_dict[dict[i]] = tuple([new_dict[dict[i]], i])
+def create_reverse_dict(dict):
+    result = {}
+    for key, value in dict.items():
+        if value in result:
+            if isinstance(result[value], tuple):
+                result[value] = (*result[value], key)
             else:
-                sp = [j for j in new_dict[dict[i]]]
-                sp.append(i)
-                new_dict[dict[i]] = tuple(sp)
+                result[value] = (result[value], key)
         else:
-            new_dict[dict[i]] = i
-    return new_dict
+            if isinstance(key, tuple):
+                result[value] = tuple([key])
+            else:
+                result[value] = key
+
+    return result
 
 
-dict = {12334: 97832, 4567: 55521, 978: 97832, 446: 97832}
-new = reverse_dict(dict)
-print(new)
+sl = {(12334, 123): 97832, 4567: 55521, 978: 97832, 446: 97832}
+try:
+    reverse_dict = create_reverse_dict(sl)
+    print(reverse_dict)
+except TypeError:
+    raise TypeError("unhashable type")

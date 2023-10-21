@@ -10,9 +10,6 @@ def specialize(func, *args, **kwargs):
         awkwardness = {**kwargs, **kwargs2}
         return func(*args, *args2, **awkwardness)
 
-    new_func.func = func
-    new_func.args = args
-    new_func.kwargs = kwargs
     return new_func
 
 
